@@ -52,7 +52,7 @@ import javax.net.ssl.HttpsURLConnection;
 import timber.log.Timber;
 
 public class Helper {
-    static private final String WALLET_DIR = "monerujo";
+    static private final String WALLET_DIR = "sumo_wallet";
 
     static public int DISPLAY_DIGITS_INFO = 5;
 
