@@ -2,7 +2,7 @@
 <resources>
     <string name="about_title">About</string>
     <string name="about_close">Close</string>
-    <string name="about_version">I am monerujo %1$s (%2$d)</string>
+    <string name="about_version">I am Sumo Wallet %1$s (%2$d)</string>
 
     <string name="donation_text">
         \"Donate you ungrateful bastards!\"
@@ -24,7 +24,7 @@
         <h1>Privacy Policy</h1>
         <p>This page informs you of our policies regarding the collection,
         use and disclosure of personal information we receive from users of our
-        app (monerujo: Monero Wallet).
+        app.
         </p>
         <p>By using the app, you agree to the collection and use of information in
         accordance with this policy.
@@ -32,12 +32,12 @@
         <h2>Data Collected</h2>
         <p>Personal data is any kind of data that could identify an individual.
         </p>
-        <p>Monero keys and public addresses are collected and processed by the app locally
-        for the purpose of processing transactions and transmitted into the Monero Network
+        <p>Sumo keys and public addresses are collected and processed by the app locally
+        for the purpose of processing transactions and transmitted into the Sumokoin Network
         in encrypted form.
         </p>
         <p>Other personal data is not collected by the app.</p>
-        <p>If you use the USD/EUR exchange (optional) functionality, monerujo fetches the exchange
+        <p>If you use the USD/EUR exchange (optional) functionality, Sumo Wallet fetches the exchange
         rate through the public API of kraken.com.
         See their privacy policy at https://www.kraken.com/legal/privacy for
         details on how data in your requests is collected (especially the
@@ -52,15 +52,14 @@
         </ul>
         <h2>Changes to this Privacy Policy</h2>
         <p>We may update this privacy policy from time to time. We will notify
-        you of any changes by posting the new privacy policy in the app and on the
-        website (www.monerujo.io)
+        you of any changes by posting the new privacy policy in the app.
         You are advised to review this privacy policy periodically for any changes.
         <p>This Privacy Policy was last updated: 10th November, 2017.
         </p>
         <h2>Contact Us</h2>
         <p>If you have any questions about our privacy policy,
         or how your data is being collected and processed,
-        please e-mail privacy@monerujo.io.
+        please e-mail devs@sumokoin.org.
         </p>
         ]]></string>
 

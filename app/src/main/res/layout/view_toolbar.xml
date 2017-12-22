@@ -16,14 +16,14 @@
         android:layout_marginTop="4dp"
         android:layout_gravity="center">
 
-        <ImageView
-            android:id="@+id/toolbarImage"
+        <TextView
+            android:id="@+id/toolBarLogo"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="-8dp"
-            android:src="@drawable/ic_logo_horizontol_xmrujo"
-            android:visibility="visible" />
+            android:layout_height="wrap_content"
+            android:text="Sumokoin Wallet"
+            android:textColor="@color/navigationBarColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"

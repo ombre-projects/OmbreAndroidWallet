@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">monerujo</string>
-    <string name="login_activity_name">monerujo</string>
+    <string name="app_name">Sumo Wallet</string>
+    <string name="login_activity_name">sumowallet</string>
     <string name="wallet_activity_name">Wallet</string>
 
     <string name="menu_testnet">Testnet</string>
@@ -52,7 +52,7 @@
     <string name="rename_failed">Rename failed!</string>
 
     <string name="label_daemon">Node</string>
-    <string name="prompt_daemon">([&lt;user&gt;:&lt;pass&gt;@]&lt;daemon&gt;[:&lt;port&gt;])</string>
+    <string name="prompt_daemon">(&lt;daemon&gt;[:&lt;port&gt;])</string>
     <string name="prompt_mainnet">Net Selection</string>
     <string name="connect_testnet">TestNet</string>
     <string name="connect_mainnet">MainNet</string>
@@ -95,18 +95,18 @@
 
     <string name="title_amount">Amount</string>
     <string name="title_date">Date</string>
-    <string name="xmr_unconfirmed_amount">+ %1$s XMR unconfirmed</string>
+    <string name="xmr_unconfirmed_amount">+ %1$s SUMO unconfirmed</string>
     <!--string name="xmr_balance">%1$s XMR</string-->
-    <string name="xmr">XMR</string>
+    <string name="xmr">SUMO</string>
     <string name="label_transactions">Transactions</string>
     <string name="text_daemonConnected">Daemon connected!</string>
 
-    <string name="service_description">monerujo Service</string>
-    <string name="local_service_started">monerujo Service Running</string>
-    <string name="local_service_stopped">monerujo Service Stopped</string>
-    <string name="local_service_label">monerujo Service</string>
-    <string name="local_service_connected">monerujo Service Connected</string>
-    <string name="local_service_disconnected">monerujo Service Disconnected</string>
+    <string name="service_description">Sumo Service</string>
+    <string name="local_service_started">Sumo Service Running</string>
+    <string name="local_service_stopped">Sumo Service Stopped</string>
+    <string name="local_service_label">Sumo Service</string>
+    <string name="local_service_connected">Sumo Service Connected</string>
+    <string name="local_service_disconnected">Sumo Service Disconnected</string>
 
     <string name="status_synced">Synced:</string>
     <string name="status_remaining">Blocks remaining</string>
@@ -125,7 +125,7 @@
     <string name="message_noselect_key">Selecting spend key disabled for security reasons!</string>
     <string name="message_nocopy">Copy disabled for security reasons!</string>
 
-    <string name="message_exchange_failed">Cannot get exchange rate!\nUse XMR/XMR or try again</string>
+    <string name="message_exchange_failed">Cannot get exchange rate!\nUse SUMO/SUMO or try again</string>
 
     <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
@@ -188,13 +188,13 @@
     <string name="send_qr_hint">Scan</string>
     <string name="send_prepare_hint">Prepare</string>
     <string name="send_dispose_hint">Dispose (Undo)</string>
-    <string name="send_send_hint">Spend my sweet Moneroj</string>
+    <string name="send_send_hint">Spend my sweet sumo</string>
     <string name="send_really_send_hint">Last Step - Confirm!</string>
-    <string name="send_qr_invalid">Not a monero QR Code</string>
+    <string name="send_qr_invalid">Not a sumo QR Code</string>
     <string name="send_qr_address_invalid">Invalid Monero address</string>
     <string name="send_preparing_progress">Preparing transaction</string>
     <string name="send_title">Send</string>
-    <string name="send_available">Available funds: %1$s XMR</string>
+    <string name="send_available">Available funds: %1$s SUMO</string>
     <string name="send_address_title">Address</string>
     <string name="send_amount_title">Amount</string>
     <string name="send_settings_title">Settings</string>
@@ -244,7 +244,7 @@
     <string name="receive_paymentid_button">Generate</string>
     <string name="receive_paymentid_hint">Payment ID (optional)</string>
     <string name="receive_amount_hint">Amount</string>
-    <string name="receive_amount_xmr_hint">XMR</string>
+    <string name="receive_amount_xmr_hint">SUMO</string>
     <string name="receive_cannot_open">Could not open wallet!</string>
     <string name="receive_paymentid_invalid">16 or 64 Hex characters (0-9,a-f)</string>
     <string name="receive_integrated_paymentid_invalid">Must be empty with integrated address</string>
@@ -253,7 +253,7 @@
     <string name="receive_amount_empty">Enter value</string>
     <string name="receive_amount_too_big">Max. %1$s</string>
     <string name="receive_amount_negative">Min. 0</string>
-    <string name="receive_amount_nan">XMR not a number</string>
+    <string name="receive_amount_nan">Sumo not a number</string>
 
     <string name="receive_title">Receive</string>
 
@@ -283,7 +283,7 @@
     </string-array>
 
     <string-array name="currency">
-        <item>XMR</item>
+        <item>SUMO</item>
         <item>EUR</item>
         <item>USD</item>
     </string-array>

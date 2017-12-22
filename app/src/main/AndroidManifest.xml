@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.m2049r.xmrwallet">
+    package="com.sumokoin.wallet">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,18 +13,18 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".XmrWalletApplication"
+        android:name="com.sumokoin.wallet.XmrWalletApplication"
         android:theme="@style/MyMaterialTheme">
 
         <activity
-            android:name=".WalletActivity"
+            android:name="com.sumokoin.wallet.WalletActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/wallet_activity_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name="com.sumokoin.wallet.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
@@ -35,10 +35,10 @@
         </activity>
 
         <service
-            android:name=".service.WalletService"
+            android:name="com.sumokoin.wallet.service.WalletService"
             android:description="@string/service_description"
             android:exported="false"
-            android:label="Monero Wallet Service" />
+            android:label="Sumokoin Wallet Service" />
 
     </application>
 
