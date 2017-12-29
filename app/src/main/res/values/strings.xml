@@ -132,7 +132,7 @@
     <string name="generate_password_hint">Wallet Password</string>
     <string name="generate_buttonGenerate">Make me a wallet already!</string>
     <string name="generate_seed">Mnemonic Seed</string>
-    <string name="generate_button_accept">I have noted these 25 words!</string>
+    <string name="generate_button_accept">I have noted these 26 words!</string>
 
     <string name="generate_button_backup">Backup</string>
     <string name="generate_button_export">Export Keys</string>
@@ -160,7 +160,7 @@
     <string name="generate_address_hint">Public Address</string>
     <string name="generate_viewkey_hint">View Key</string>
     <string name="generate_spendkey_hint">Spend Key</string>
-    <string name="generate_mnemonic_hint">25-Word Mnemonic Seed</string>
+    <string name="generate_mnemonic_hint">26-Word Mnemonic Seed</string>
     <string name="generate_restoreheight_hint">Restore Height</string>
 
     <string name="generate_wallet_label">Wallet</string>
@@ -174,7 +174,7 @@
     <!--string name="generate_check_keys">Check your keys!</string-->
     <string name="generate_check_key">Enter valid Key</string>
     <string name="generate_check_address">Enter valid Address</string>
-    <string name="generate_check_mnemonic">Enter your 25 word seed</string>
+    <string name="generate_check_mnemonic">Enter your 26 word seed</string>
     <!--string name="generate_check_something">Check your entry!</string-->
 
     <string name="send_address_hint">Receiver\'s Address</string>
@@ -269,8 +269,7 @@
     <string name="big_amount">999999.999999999999</string>
 
     <string-array name="mixin">
-        <item>Ringsize 9</item>
-        <item>Ringsize 12</item>
+      <item>Mixin 12</item>
     </string-array>
 
     <string-array name="priority">
@@ -289,5 +288,5 @@
     <string name="fab_create_new">Create new wallet</string>
     <string name="fab_restore_viewonly">Restore view-only wallet</string>
     <string name="fab_restore_key">Restore wallet from private keys</string>
-    <string name="fab_restore_seed">Restore wallet 25 word seed</string>
+    <string name="fab_restore_seed">Restore wallet 26 word seed</string>
 </resources>
