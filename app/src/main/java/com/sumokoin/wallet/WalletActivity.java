@@ -153,9 +153,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             case R.id.action_info:
                 onWalletDetails();
                 return true;
-            case R.id.action_donate:
-                DonationFragment.display(getSupportFragmentManager());
-                return true;
             case R.id.action_share:
                 onShareTxInfo();
                 return true;
@@ -207,8 +204,6 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
                     case Toolbar.BUTTON_CLOSE:
                         finish();
                         break;
-                    case Toolbar.BUTTON_DONATE:
-                        Toast.makeText(WalletActivity.this, getString(R.string.label_donate), Toast.LENGTH_SHORT).show();
                     case Toolbar.BUTTON_NONE:
                     default:
                         Timber.e("Button " + type + "pressed - how can this be?");

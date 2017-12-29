@@ -41,6 +41,48 @@ static jclass class_Transfer;
 
 std::mutex _listenerMutex;
 
+#include <limits.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+
+static int pfd[2];
+static pthread_t thr;
+static const char *tag = "sumo_wallet";
+
+static void *thread_func(void*)
+{
+    ssize_t rdsz;
+    char buf[128];
+    while((rdsz = read(pfd[0], buf, sizeof buf - 1)) > 0) {
+        if(buf[rdsz - 1] == '\n') --rdsz;
+        buf[rdsz] = 0;  /* add null-terminator */
+        __android_log_write(ANDROID_LOG_DEBUG, tag, buf);
+    }
+    return 0;
+}
+
+int start_logger(const char *app_name)
+{
+    tag = app_name;
+
+    /* make stdout line-buffered and stderr unbuffered */
+    setvbuf(stdout, 0, _IOLBF, 0);
+    setvbuf(stderr, 0, _IONBF, 0);
+
+    /* create the pipe and redirect stdout and stderr */
+    pipe(pfd);
+    dup2(pfd[1], 1);
+    dup2(pfd[1], 2);
+
+    /* spawn the logging thread */
+    if(pthread_create(&thr, 0, thread_func, 0) == -1)
+        return -1;
+    pthread_detach(thr);
+    return 0;
+}
+
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     cachedJVM = jvm;
     LOGI("JNI_OnLoad");
@@ -48,6 +90,8 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     if (jvm->GetEnv(reinterpret_cast<void **>(&jenv), JNI_VERSION_1_6) != JNI_OK) {
         return -1;
     }
+
+    start_logger("woo");
     //LOGI("JNI_OnLoad ok");
 
     class_ArrayList = static_cast<jclass>(jenv->NewGlobalRef(
@@ -476,9 +520,7 @@ JNIEXPORT jboolean JNICALL
 Java_com_sumokoin_wallet_model_WalletManager_closeJ(JNIEnv *env, jobject instance,
                                                      jobject walletInstance) {
     Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, walletInstance);
-    //bool closeSuccess = Monero::WalletManagerFactory::getWalletManager()->closeWallet(wallet,
-    //
-    bool closeSuccess = Monero::WalletManagerFactory::getWalletManager()->closeWallet(wallet);
+    bool closeSuccess = Monero::WalletManagerFactory::getWalletManager()->closeWallet(wallet, false);
     if (closeSuccess) {
         MyWalletListener *walletListener = getHandle<MyWalletListener>(env, walletInstance,
                                                                        "listenerHandle");
@@ -615,11 +657,11 @@ Java_com_sumokoin_wallet_model_Wallet_initJ(JNIEnv *env, jobject instance,
     const char *_daemon_username = env->GetStringUTFChars(daemon_username, NULL);
     const char *_daemon_password = env->GetStringUTFChars(daemon_password, NULL);
     Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
-    bool status = wallet->init(_daemon_address, upper_transaction_size_limit);
+    wallet->init(_daemon_address, upper_transaction_size_limit);
     env->ReleaseStringUTFChars(daemon_address, _daemon_address);
     env->ReleaseStringUTFChars(daemon_username, _daemon_username);
     env->ReleaseStringUTFChars(daemon_password, _daemon_password);
-    return status;
+    return true;
 }
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
@@ -785,10 +827,8 @@ Java_com_sumokoin_wallet_model_Wallet_createTransactionJ(JNIEnv *env, jobject in
             static_cast<Monero::PendingTransaction::Priority>(priority);
     Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
 
-    Monero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id,
-                                                                  amount, mixin_count,
-                                                                  _priority);
-
+    LOGD("Create transaction amount: %lld", (uint64_t)amount);
+   Monero::PendingTransaction *tx = wallet->createTransaction(_dst_addr, _payment_id, (uint64_t)amount, mixin_count);
     env->ReleaseStringUTFChars(dst_addr, _dst_addr);
     env->ReleaseStringUTFChars(payment_id, _payment_id);
     return reinterpret_cast<jlong>(tx);

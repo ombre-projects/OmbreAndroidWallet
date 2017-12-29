@@ -108,6 +108,7 @@ public class WalletService extends Service {
             Wallet wallet = getWallet();
             if (wallet == null) throw new IllegalStateException("No wallet!");
             // don't flood with an update for every block ...
+
             if (lastBlockTime < System.currentTimeMillis() - 2000) {
                 Timber.d("newBlock() @ %d with observer %s", height, observer);
                 lastBlockTime = System.currentTimeMillis();
@@ -300,8 +301,8 @@ public class WalletService extends Service {
                         if (observer != null) observer.onWalletStored(rc);
                     } else if (cmd.equals(REQUEST_CMD_TX)) {
                         Wallet myWallet = getWallet();
-                        Timber.d("CREATE TX for wallet: %s", myWallet.getName());
                         TxData txData = extras.getParcelable(REQUEST_CMD_TX_DATA);
+                        Timber.d("CREATE TX for wallet: %s (amount: %d)", myWallet.getName(), txData.getAmount());
                         PendingTransaction pendingTransaction = myWallet.createTransaction(txData);
                         PendingTransaction.Status status = pendingTransaction.getStatus();
                         Timber.d("transaction status %s", status);
@@ -513,6 +514,8 @@ public class WalletService extends Service {
         Wallet wallet = openWallet(walletName, walletPassword);
         if (wallet != null) {
             Timber.d("Using daemon %s", WalletManager.getInstance().getDaemonAddress());
+            Timber.d("Blockchain hight %d", wallet.getBlockChainHeight());
+
             showProgress(55);
             wallet.init(0);
             showProgress(90);

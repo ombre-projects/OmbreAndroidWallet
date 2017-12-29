@@ -105,6 +105,7 @@ public class WalletFragment extends Fragment
         sCurrency.setAdapter(ArrayAdapter.createFromResource(getContext(), R.array.currency, R.layout.item_spinner_balance));
 
         bSend = (Button) view.findViewById(R.id.bSend);
+        bSend.setVisibility(View.INVISIBLE);
         bReceive = (Button) view.findViewById(R.id.bReceive);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
@@ -342,8 +343,11 @@ public class WalletFragment extends Fragment
         Wallet.ConnectionStatus daemonConnected = activityCallback.getConnectionStatus();
         if (daemonConnected == Wallet.ConnectionStatus.ConnectionStatus_Connected) {
             long daemonHeight = activityCallback.getDaemonHeight();
+            long n = daemonHeight - wallet.getBlockChainHeight();
+
             if (!wallet.isSynchronized()) {
-                long n = daemonHeight - wallet.getBlockChainHeight();
+                Timber.d("Daemon heigth: %d Wallet: %d", daemonHeight, wallet.getBlockChainHeight());
+
                 sync = getString(R.string.status_syncing) + " " + formatter.format(n) + " " + getString(R.string.status_remaining);
                 if (firstBlock == 0) {
                     firstBlock = wallet.getBlockChainHeight();

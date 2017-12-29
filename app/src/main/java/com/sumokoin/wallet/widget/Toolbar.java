@@ -44,7 +44,6 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     TextView toolBarLogo;
     TextView toolbarTitle;
     TextView toolbarSubtitle;
-    Button bDonate;
 
     public Toolbar(Context context) {
         super(context);
@@ -81,14 +80,6 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
         toolBarLogo = (TextView) findViewById(R.id.toolBarLogo);
         toolbarTitle = (TextView) findViewById(R.id.toolbarTitle);
         toolbarSubtitle = (TextView) findViewById(R.id.toolbarSubtitle);
-        bDonate = (Button) findViewById(R.id.bDonate);
-        bDonate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (onButtonListener != null) {
-                    onButtonListener.onButton(buttonType);
-                }
-            }
-        });
     }
 
     public void setTitle(String title, String subtitle) {
@@ -110,43 +101,24 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     public final static int BUTTON_NONE = 0;
     public final static int BUTTON_BACK = 1;
     public final static int BUTTON_CLOSE = 2;
-    public final static int BUTTON_DONATE = 3;
     public final static int BUTTON_CANCEL = 4;
 
-    int buttonType = BUTTON_DONATE;
+    int buttonType = BUTTON_NONE;
 
     public void setButton(int type) {
         switch (type) {
             case BUTTON_BACK:
                 Timber.d("BUTTON_BACK");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_back_white_24dp, 0, 0, 0);
-                bDonate.setText(null);
-                bDonate.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CLOSE:
                 Timber.d("BUTTON_CLOSE");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
-                bDonate.setText(R.string.label_close);
-                bDonate.setVisibility(View.VISIBLE);
-                break;
-            case BUTTON_DONATE:
-                Timber.d("BUTTON_DONATE");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_favorite_white_24dp, 0, 0, 0);
-                bDonate.setText(R.string.label_donate);
-                bDonate.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_CANCEL:
                 Timber.d("BUTTON_CANCEL");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_close_white_24dp, 0, 0, 0);
-                bDonate.setText(R.string.label_cancel);
-                bDonate.setVisibility(View.VISIBLE);
                 break;
             case BUTTON_NONE:
             default:
                 Timber.d("BUTTON_NONE");
-                bDonate.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                bDonate.setText(null);
-                bDonate.setVisibility(View.INVISIBLE);
         }
         buttonType = type;
     }

@@ -121,9 +121,6 @@ public class LoginActivity extends SecureActivity
                     case Toolbar.BUTTON_CLOSE:
                         finish();
                         break;
-                    case Toolbar.BUTTON_DONATE:
-                        DonationFragment.display(getSupportFragmentManager());
-                        break;
                     case Toolbar.BUTTON_NONE:
                     default:
                         Timber.e("Button " + type + "pressed - how can this be?");

@@ -123,7 +123,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         super.onResume();
         Timber.d("onResume()");
         activityCallback.setTitle(null);
-        activityCallback.setToolbarButton(Toolbar.BUTTON_DONATE);
         activityCallback.showNet(isTestnet());
     }
 
@@ -341,7 +340,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
 
     private static final String PREF_DAEMONLIST_MAINNET =
-            "192.168.0.192:19734";
+            "pool.sumokoin.ch:4444";
 
     private static final String PREF_DAEMONLIST_TESTNET =
             "testnet.nope";

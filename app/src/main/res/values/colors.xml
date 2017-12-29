@@ -10,13 +10,18 @@
 
     <color name="trafficGray">#9B9B9B</color>
 
-    <color name="take">#FF417505</color>
-    <color name="give">#FFFF6105</color>
+    <color name="take">#515e78</color>
+    <color name="give">#515e78</color>
+    <color name="sumoBlue">#7064f5</color>
+    <color name="sumoDarkBlue">#0d0191</color>
+    <color name="sumoLightBlue">#c1bbf1</color>
+    <color name="sumoLightGrey">#d5d5d9</color>
+    <color name="sumoDarkGrey">#adadb1</color>
 
     <color name="moneroOrange">#cc5100</color>
     <color name="moneroWhite">#ffffff</color>
     <color name="moneroBlack">#000000</color>
-    <color name="moneroGray">#FD9B9B9B</color>
+    <color name="moneroGray">#fd9b9b9b</color>
 
     <color name="dotGray">#FF4A4A4A</color>
 

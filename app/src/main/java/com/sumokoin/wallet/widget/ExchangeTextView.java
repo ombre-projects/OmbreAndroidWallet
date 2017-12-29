@@ -58,7 +58,7 @@ public class ExchangeTextView extends LinearLayout
     }
 
     public boolean validate(double max) {
-        Timber.d("inProgress=%b", isExchangeInProgress());
+        Timber.d("inProgress=%b (max=%f)", isExchangeInProgress(), max);
         if (isExchangeInProgress()) {
             shakeExchangeField();
             return false;
@@ -68,9 +68,11 @@ public class ExchangeTextView extends LinearLayout
             try {
                 double amount = Double.parseDouble(xmrAmount);
                 if (amount > max) {
+                    Timber.d("amount > max");
                     ok = false;
                 }
                 if (amount <= 0) {
+                    Timber.d("amount <= 0");
                     ok = false;
                 }
             } catch (NumberFormatException ex) {
@@ -79,6 +81,7 @@ public class ExchangeTextView extends LinearLayout
                 ok = false;
             }
         } else {
+            Timber.d("xmrAmount == null");
             ok = false;
         }
         if (!ok) {

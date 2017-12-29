@@ -44,11 +44,11 @@
         section "Information We Collect Automatically").</p>
         <h2>App Permissions</h2>
         <ul>
-        <li>INTERNET : Connect to the Monero Network via a Monero Daemon Node</li>
+        <li>INTERNET : Connect to the Sumokoin Network via a Sumokoin Daemon Node</li>
         <li>READ_EXTERNAL_STORAGE : Read wallet files stored on the device</li>
         <li>WRITE_EXTERNAL_STORAGE : Write wallet files stored on the device</li>
         <li>WAKE_LOCK : Keep device awake while syncing</li>
-        <li>CAMERA : Scan QR Codes for receiving Monero</li>
+        <li>CAMERA : Scan QR Codes for receiving Sumokoin</li>
         </ul>
         <h2>Changes to this Privacy Policy</h2>
         <p>We may update this privacy policy from time to time. We will notify

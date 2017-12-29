@@ -269,10 +269,8 @@
     <string name="big_amount">999999.999999999999</string>
 
     <string-array name="mixin">
-        <item>Ringsize 5</item>
-        <item>Ringsize 8</item>
-        <item>Ringsize 13</item>
-        <item>Ringsize 26</item>
+        <item>Ringsize 9</item>
+        <item>Ringsize 12</item>
     </string-array>
 
     <string-array name="priority">

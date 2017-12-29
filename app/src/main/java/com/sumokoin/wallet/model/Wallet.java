@@ -20,6 +20,8 @@ import com.sumokoin.wallet.data.TxData;
 
 import java.io.File;
 
+import timber.log.Timber;
+
 public class Wallet {
     static {
         System.loadLibrary("monerujo");
@@ -192,6 +194,8 @@ public class Wallet {
     }
 
     public PendingTransaction createTransaction(TxData txData) {
+
+        Timber.i("XXX: wallet createTransaction txData.getAmount(): %d ", txData.getAmount());
         return createTransaction(
                 txData.getDestinationAddress(),
                 txData.getPaymentId(),
@@ -205,6 +209,8 @@ public class Wallet {
                                                 PendingTransaction.Priority priority) {
         disposePendingTransaction();
         int _priority = priority.getValue();
+        Timber.i("XXX: wallet createTransaction amount: %d ", amount);
+
         long txHandle = createTransactionJ(dst_addr, payment_id, amount, mixin_count, _priority);
         pendingTransaction = new PendingTransaction(txHandle);
         return pendingTransaction;
