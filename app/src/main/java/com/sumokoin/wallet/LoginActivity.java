@@ -1085,6 +1085,8 @@ public class LoginActivity extends SecureActivity
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());
                 return true;
+/*
+    Testnet is disabled for now.
             case R.id.action_testnet:
                 try {
                     LoginFragment loginFragment = (LoginFragment)
@@ -1093,6 +1095,7 @@ public class LoginActivity extends SecureActivity
                 } catch (ClassCastException ex) {
                 }
                 return true;
+                */
             default:
                 return super.onOptionsItemSelected(item);
         }

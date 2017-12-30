@@ -306,7 +306,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.list_menu, menu);
+        /*
+        Testnet is disabled for now.
         menu.findItem(R.id.action_testnet).setChecked(isTestnet());
+         */
         super.onCreateOptionsMenu(menu, inflater);
     }
 
