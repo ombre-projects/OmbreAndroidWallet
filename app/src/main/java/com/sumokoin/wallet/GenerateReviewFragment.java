@@ -58,6 +58,7 @@ public class GenerateReviewFragment extends Fragment {
     TextView tvWalletViewKey;
     TextView tvWalletSpendKey;
     ImageButton bCopyAddress;
+    ImageButton bCopySeed;
     LinearLayout llAdvancedInfo;
     Button bAdvancedInfo;
     Button bAccept;
@@ -77,6 +78,7 @@ public class GenerateReviewFragment extends Fragment {
         tvWalletSpendKey = (TextView) view.findViewById(R.id.tvWalletSpendKey);
         tvWalletMnemonic = (TextView) view.findViewById(R.id.tvWalletMnemonic);
         bCopyAddress = (ImageButton) view.findViewById(R.id.bCopyAddress);
+        bCopySeed = (ImageButton) view.findViewById(R.id.bCopySeed);
         bAdvancedInfo = (Button) view.findViewById(R.id.bAdvancedInfo);
         llAdvancedInfo = (LinearLayout) view.findViewById(R.id.llAdvancedInfo);
 
@@ -102,6 +104,12 @@ public class GenerateReviewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 copyAddress();
+            }
+        });
+        bCopySeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copySeed();
             }
         });
         view.findViewById(R.id.bAdvancedInfo).setOnClickListener(new View.OnClickListener() {
@@ -130,6 +138,10 @@ public class GenerateReviewFragment extends Fragment {
     void copyAddress() {
         Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_address), tvWalletAddress.getText().toString());
         Toast.makeText(getActivity(), getString(R.string.message_copy_address), Toast.LENGTH_SHORT).show();
+    }
+    void copySeed() {
+        Helper.clipBoardCopy(getActivity(), getString(R.string.label_copy_address), tvWalletMnemonic.getText().toString());
+        Toast.makeText(getActivity(), "Mnemonic seed copied to clipboard!", Toast.LENGTH_SHORT).show();
     }
 
     void nocopy() {

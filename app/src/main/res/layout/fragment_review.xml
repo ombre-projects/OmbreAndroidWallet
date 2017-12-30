@@ -109,6 +109,16 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:text="@string/generate_mnemonic_label" />
+
+            <ImageButton
+                android:id="@+id/bCopySeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="80dp"
+                android:background="?android:selectableItemBackground"
+                android:enabled="false"
+                android:src="@drawable/ic_content_nocopy_black_24dp" />
         </FrameLayout>
 
         <TextView

@@ -57,7 +57,7 @@ public class SendSettingsWizardFragment extends SendWizardFragment {
         void setNotes(final String notes);
     }
 
-    final static int Mixins[] = {9, 12}; // must match the layout XML
+    final static int Mixins[] = {12}; // must match the layout XML
     final static PendingTransaction.Priority Priorities[] =
             {PendingTransaction.Priority.Priority_Default,
                     PendingTransaction.Priority.Priority_Low,
