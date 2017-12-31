@@ -61,6 +61,8 @@
     <string name="status_wallet_unloading">Saving Wallet</string>
     <string name="status_wallet_unloaded">Wallet saved</string>
     <string name="status_wallet_unload_failed">Wallet save failed!</string>
+    <string name="status_wallet_unlocked_balance">Getting unlocked balance</string>
+
     <string name="status_wallet_connecting">Connecting &#8230; (please wait)</string>
     <string name="status_wallet_connect_failed">Node connection failed!\nCheck username/password</string>
     <string name="status_wallet_connect_timeout">Node connection timed out!\nTry again or another.</string>
@@ -111,6 +113,7 @@
     <string name="status_synced">Synced:</string>
     <string name="status_remaining">Blocks remaining</string>
     <string name="status_syncing">Scanning:</string>
+
 
     <string name="prompt_problems">Problems</string>
     <string name="message_strorage_not_writable">External Storage is not writable! Panic!</string>
@@ -281,8 +284,6 @@
 
     <string-array name="currency">
         <item>SUMO</item>
-        <item>EUR</item>
-        <item>USD</item>
     </string-array>
 
     <string name="fab_create_new">Create new wallet</string>

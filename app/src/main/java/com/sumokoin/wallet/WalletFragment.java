@@ -152,7 +152,7 @@ public class WalletFragment extends Fragment
         // at this point selection is XMR in case of error
         String displayB;
         double amountA = Double.parseDouble(Wallet.getDisplayAmount(unlockedBalance)); // crash if this fails!
-        if (!"XMR".equals(balanceCurrency)) { // not XMR
+        if (!"SUMO".equals(balanceCurrency)) { // not XMR
             double amountB = amountA * balanceRate;
             displayB = Helper.getFormattedAmount(amountB, false);
         } else { // XMR
@@ -174,7 +174,7 @@ public class WalletFragment extends Fragment
             String currency = (String) sCurrency.getSelectedItem();
             if (!currency.equals(balanceCurrency) || (balanceRate <= 0)) {
                 showExchanging();
-                exchangeApi.queryExchangeRate("XMR", currency,
+                exchangeApi.queryExchangeRate("SUMO", currency,
                         new ExchangeCallback() {
                             @Override
                             public void onSuccess(final ExchangeRate exchangeRate) {
@@ -230,10 +230,10 @@ public class WalletFragment extends Fragment
 
     public void exchange(final ExchangeRate exchangeRate) {
         hideExchanging();
-        if (!"XMR".equals(exchangeRate.getBaseCurrency())) {
-            Timber.e("Not XMR");
+        if (!"SUMO".equals(exchangeRate.getBaseCurrency())) {
+            Timber.e("Not SUMO");
             sCurrency.setSelection(0, true);
-            balanceCurrency = "XMR";
+            balanceCurrency = "SUMO";
             balanceRate = 1.0;
         } else {
             int spinnerPosition = ((ArrayAdapter) sCurrency.getAdapter()).getPosition(exchangeRate.getQuoteCurrency());
@@ -332,6 +332,7 @@ public class WalletFragment extends Fragment
             setActivityTitle(wallet);
         }
         long balance = wallet.getBalance();
+        setProgress(getString(R.string.status_wallet_unlocked_balance));
         unlockedBalance = wallet.getUnlockedBalance();
         refreshBalance();
         double amountXmr = Double.parseDouble(Helper.getDisplayAmount(balance - unlockedBalance)); // assume this cannot fail!

@@ -52,7 +52,7 @@ public class ExchangeApiImpl implements ExchangeApi {
     }
 
     public ExchangeApiImpl(@NonNull final OkHttpClient okHttpClient) {
-        this(okHttpClient, HttpUrl.parse("https://api.kraken.com/0/public/Ticker"));
+        this(okHttpClient, HttpUrl.parse("https://api.cryptonator.com/api/ticker"));
     }
 
     @Override
@@ -67,12 +67,12 @@ public class ExchangeApiImpl implements ExchangeApi {
         boolean inverse = false;
         String fiat = null;
 
-        if (baseCurrency.equals("XMR")) {
+        if (baseCurrency.equals("SUMO")) {
             fiat = quoteCurrency;
             inverse = false;
         }
 
-        if (quoteCurrency.equals("XMR")) {
+        if (quoteCurrency.equals("SUMO")) {
             fiat = baseCurrency;
             inverse = true;
         }
@@ -85,7 +85,7 @@ public class ExchangeApiImpl implements ExchangeApi {
         final boolean swapAssets = inverse;
 
         final HttpUrl url = baseUrl.newBuilder()
-                .addQueryParameter("pair", "XMR" + fiat)
+                .addPathSegment("sumo-" + fiat)
                 .build();
 
         final Request httpRequest = createHttpRequest(url);
@@ -101,12 +101,11 @@ public class ExchangeApiImpl implements ExchangeApi {
                 if (response.isSuccessful()) {
                     try {
                         final JSONObject json = new JSONObject(response.body().string());
-                        final JSONArray jsonError = json.getJSONArray("error");
-                        if (jsonError.length() > 0) {
-                            final String errorMsg = jsonError.getString(0);
+                        if (!json.getBoolean("success")) {
+                            final String errorMsg = json.getString("error");
                             callback.onError(new ExchangeException(response.code(), errorMsg));
                         } else {
-                            final JSONObject jsonResult = json.getJSONObject("result");
+                            final JSONObject jsonResult = json.getJSONObject("ticker");
                             reportSuccess(jsonResult, swapAssets, callback);
                         }
                     } catch (JSONException ex) {
