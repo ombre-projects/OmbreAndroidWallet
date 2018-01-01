@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '26.0.3'
     defaultConfig {
-        applicationId "com.m2049r.xmrwallet"
+        applicationId "com.sumokoin.sumowallet"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 51

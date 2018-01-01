@@ -136,12 +136,10 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         fabScreen = (FrameLayout) view.findViewById(R.id.fabScreen);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fabNew = (FloatingActionButton) view.findViewById(R.id.fabNew);
-        fabView = (FloatingActionButton) view.findViewById(R.id.fabView);
         fabKey = (FloatingActionButton) view.findViewById(R.id.fabKey);
         fabSeed = (FloatingActionButton) view.findViewById(R.id.fabSeed);
 
         fabNewL = (RelativeLayout) view.findViewById(R.id.fabNewL);
-        fabViewL = (RelativeLayout) view.findViewById(R.id.fabViewL);
         fabKeyL = (RelativeLayout) view.findViewById(R.id.fabKeyL);
         fabSeedL = (RelativeLayout) view.findViewById(R.id.fabSeedL);
 
@@ -154,7 +152,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         rotate_backward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_backward);
         fab.setOnClickListener(this);
         fabNew.setOnClickListener(this);
-        fabView.setOnClickListener(this);
         fabKey.setOnClickListener(this);
         fabSeed.setOnClickListener(this);
         fabScreen.setOnClickListener(this);
@@ -400,9 +397,9 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     }
 
     private boolean isFabOpen = false;
-    private FloatingActionButton fab, fabNew, fabView, fabKey, fabSeed;
+    private FloatingActionButton fab, fabNew, fabKey, fabSeed;
     private FrameLayout fabScreen;
-    private RelativeLayout fabNewL, fabViewL, fabKeyL, fabSeedL;
+    private RelativeLayout fabNewL, fabKeyL, fabSeedL;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward, fab_open_screen, fab_close_screen;
     private Animation fab_pulse;
 
@@ -418,8 +415,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             fab.startAnimation(rotate_backward);
             fabNewL.startAnimation(fab_close);
             fabNew.setClickable(false);
-            fabViewL.startAnimation(fab_close);
-            fabView.setClickable(false);
             fabKeyL.startAnimation(fab_close);
             fabKey.setClickable(false);
             fabSeedL.startAnimation(fab_close);
@@ -431,8 +426,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
             fab.startAnimation(rotate_forward);
             fabNewL.startAnimation(fab_open);
             fabNew.setClickable(true);
-            fabViewL.startAnimation(fab_open);
-            fabView.setClickable(true);
             fabKeyL.startAnimation(fab_open);
             fabKey.setClickable(true);
             fabSeedL.startAnimation(fab_open);
@@ -452,10 +445,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
                 fabScreen.setVisibility(View.INVISIBLE);
                 isFabOpen = false;
                 activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_NEW);
-                break;
-            case R.id.fabView:
-                animateFAB();
-                activityCallback.onAddWallet(isTestnet(), GenerateFragment.TYPE_VIEWONLY);
                 break;
             case R.id.fabKey:
                 animateFAB();
