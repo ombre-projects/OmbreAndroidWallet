@@ -93,7 +93,7 @@
     <string name="label_watchonly">(Watch Only)</string>
 
     <string name="label_wallet_receive">Receive</string>
-    <string name="label_wallet_send">Give</string>
+    <string name="label_wallet_send">Send</string>
 
     <string name="title_amount">Amount</string>
     <string name="title_date">Date</string>
