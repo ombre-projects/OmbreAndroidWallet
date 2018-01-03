@@ -74,11 +74,10 @@
         <h1>Wallet List</h1>
         <h2>Node</h2>
         <p>Sumo wallet uses a Remote Node to communicate with the Sumokoin Network without having
-        to download and store a copy of the whole blockchain itself. You can find a list of popular
-        remote nodes or learn how to run your own remote node here https://TODO/<p>
+          to download and store a copy of the whole blockchain itself.</p>
         <p>Sumo wallet remembers the last five nodes used.</p>
         <h2>Wallets</h2>
-        <p>Here you see your wallets. They are located in the <tt>monerujo</tt> folder
+        <p>Here you see your wallets. They are located in the <tt>sumo_wallet</tt> folder
         in the internal storage of your device. You can use a file explorer app to see them.
         You should make backups of this folder on a regular basis to off-device storage in
         case your device explodes or gets stolen.</p>
@@ -91,7 +90,7 @@
         <h3>Rename</h3>
         <p>Rename the wallet. Backups are not renamed.</p>
         <h3>Backup</h3>
-        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>monerujo</tt>
+        <p>Make a copy of the wallet in the <tt>backups</tt> folder inside the <tt>sumo_wallet</tt>
         overwriting previous copies there.</p>
         <h3>Archive</h3>
         <p>Make a backup and delete the wallet afterwards. The copy remains in the <tt>backups</tt>

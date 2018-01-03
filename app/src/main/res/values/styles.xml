@@ -295,7 +295,7 @@
     </style>
 
     <style name="MoneroTextAppearanceSpinnerItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
-        <item name="android:textColor">@color/gradientOrange</item>
+        <item name="android:textColor">@color/sumoDarkBlue</item>
     </style>
 
     <style name="MoneroSpinnerItem.Balance">
