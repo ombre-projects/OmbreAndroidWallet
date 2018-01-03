@@ -340,19 +340,30 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
 
     private static final String PREF_DAEMONLIST_MAINNET =
-            "wallet.sumokoin.ch:4444";
+            "wallet.sumokoin.ch:4445";
 
     private static final String PREF_DAEMONLIST_TESTNET =
             "testnet.nope";
 
     private NodeList daemonTestNet;
-    private NodeList daemonMainNet;
+    private NodeList daemonMainNet = null;
 
     void loadPrefs() {
         SharedPreferences sharedPref = activityCallback.getPrefs();
-
-        daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
+        NodeList tmpList;
+        tmpList = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
+        for (int i=0; i < tmpList.getNodes().size(); i++) {
+            // Workaround for to direct users to the SSL port.
+            if (!tmpList.getNodes().get(i).equals("wallet.sumokoin.ch:4444")) {
+                if (daemonMainNet == null) {
+                    daemonMainNet = new NodeList(PREF_DAEMONLIST_MAINNET);
+                } else if(!daemonMainNet.getNodes().contains(tmpList.getNodes().get(i))) {
+                    daemonMainNet.getNodes().add(tmpList.getNodes().get(i));
+                }
+            }
+        }
         daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, PREF_DAEMONLIST_TESTNET));
+
         setNet(isTestnet(), false);
     }
 
