@@ -28,6 +28,7 @@ import android.content.res.AssetManager;
 import android.media.MediaScannerConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -1264,7 +1265,8 @@ public class LoginActivity extends SecureActivity
         OutputStream out = null;
         try {
             in = assetManager.open("cacert.pem");
-            File outFile = new File("/sdcard/sumo_wallet/", "cacert.pem");
+            File outFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/sumo_wallet/", "cacert.pem");
+            outFile.mkdirs();
             out = new FileOutputStream(outFile);
             copyFile(in, out);
         } catch(IOException e) {

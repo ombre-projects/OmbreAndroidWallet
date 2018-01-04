@@ -340,7 +340,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
 
     private static final String PREF_DAEMONLIST_MAINNET =
-            "wallet.sumokoin.ch:4445";
+            "wallet.sumokoin.ch:4445;wallet.sumoremote.host:4445";
 
     private static final String PREF_DAEMONLIST_TESTNET =
             "testnet.nope";

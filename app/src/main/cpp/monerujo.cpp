@@ -652,12 +652,15 @@ JNIEXPORT jboolean JNICALL
 Java_com_sumokoin_wallet_model_Wallet_initJ(JNIEnv *env, jobject instance,
                                              jstring daemon_address,
                                              jlong upper_transaction_size_limit,
-                                             jstring daemon_username, jstring daemon_password) {
+                                             jstring ssl_ca_certs,
+                                             jstring daemon_username,
+                                             jstring daemon_password) {
     const char *_daemon_address = env->GetStringUTFChars(daemon_address, NULL);
     const char *_daemon_username = env->GetStringUTFChars(daemon_username, NULL);
     const char *_daemon_password = env->GetStringUTFChars(daemon_password, NULL);
+    const char *_ssl_ca_certs = env->GetStringUTFChars(ssl_ca_certs, NULL);
     Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
-    wallet->init(_daemon_address, upper_transaction_size_limit, true /* enable ssl */);
+    wallet->init(_daemon_address, upper_transaction_size_limit, true /* enable ssl */, _ssl_ca_certs);
     env->ReleaseStringUTFChars(daemon_address, _daemon_address);
     env->ReleaseStringUTFChars(daemon_username, _daemon_username);
     env->ReleaseStringUTFChars(daemon_password, _daemon_password);

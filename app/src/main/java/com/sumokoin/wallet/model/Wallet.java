@@ -16,6 +16,8 @@
 
 package com.sumokoin.wallet.model;
 
+import android.os.Environment;
+
 import com.sumokoin.wallet.data.TxData;
 
 import java.io.File;
@@ -107,13 +109,16 @@ public class Wallet {
 
     //    virtual std::string keysFilename() const = 0;
     public boolean init(long upper_transaction_size_limit) {
+
+        String ssl_ca_certs = Environment.getExternalStorageDirectory().getAbsolutePath() + "/sumo_wallet/cacert.pem";
         return initJ(WalletManager.getInstance().getDaemonAddress(), upper_transaction_size_limit,
+                ssl_ca_certs,
                 WalletManager.getInstance().getDaemonUsername(),
                 WalletManager.getInstance().getDaemonPassword());
     }
 
     private native boolean initJ(String daemon_address, long upper_transaction_size_limit,
-                                 String daemon_username, String daemon_password);
+                                 String ssl_ca_certs, String daemon_username, String daemon_password);
 
 //    virtual bool createWatchOnly(const std::string &path, const std::string &password, const std::string &language) const = 0;
 //    virtual void setRefreshFromBlockHeight(uint64_t refresh_from_block_height) = 0;

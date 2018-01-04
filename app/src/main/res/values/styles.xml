@@ -248,11 +248,11 @@
     <style name="MoneroButton.ReallySend"></style>
 
     <style name="MoneroButton.Take">
-        <item name="android:background">@color/take</item>
+        <item name="android:background">@color/moneroGray</item>
     </style>
 
     <style name="MoneroButton.Give">
-        <item name="android:background">@color/give</item>
+        <item name="android:background">@color/moneroGray</item>
     </style>
 
     <style name="MoneroEdit" parent="MoneroText">
