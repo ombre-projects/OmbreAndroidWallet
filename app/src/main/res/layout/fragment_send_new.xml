@@ -41,11 +41,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/gradientOrange"
+            android:background="@color/sumoDarkGrey"
             app:activeColor="@color/white"
             app:activeDot="0"
             app:dotSize="12dp"
-            app:inactiveColor="@color/dotGray"
+            app:inactiveColor="@color/sumoDarkBlue"
             app:numberDots="4" />
 
         <Button
