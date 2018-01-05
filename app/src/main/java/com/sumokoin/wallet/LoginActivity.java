@@ -1264,9 +1264,18 @@ public class LoginActivity extends SecureActivity
         InputStream in = null;
         OutputStream out = null;
         try {
+
+            // Make the directory
             in = assetManager.open("cacert.pem");
-            File outFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/sumo_wallet/", "cacert.pem");
-            outFile.mkdirs();
+            String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/sumo_wallet/";
+            File outdir = new File(dir);
+            outdir.mkdirs();
+
+            File outFile = new File(dir, "cacert.pem");
+            if (outFile.exists()) {
+                outFile.delete();
+            }
+
             out = new FileOutputStream(outFile);
             copyFile(in, out);
         } catch(IOException e) {
