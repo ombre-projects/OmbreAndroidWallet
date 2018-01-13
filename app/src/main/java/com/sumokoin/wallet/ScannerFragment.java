@@ -57,7 +57,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
         mScannerView.startCamera();
     }
 
-    static final String QR_SCHEME = "monero:";
+    static final String QR_SCHEME = "sumokoin:";
     static final String QR_PAYMENTID = "tx_payment_id";
     static final String QR_AMOUNT = "tx_amount";
 
@@ -67,6 +67,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
             if (onScannedListener.onScanned(rawResult.getText())) {
                 return;
             } else {
+                Timber.d("handleResult() onScanned == false");
                 Toast.makeText(getActivity(), getString(R.string.send_qr_address_invalid), Toast.LENGTH_SHORT).show();
             }
         } else {
