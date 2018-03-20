@@ -97,6 +97,34 @@ make install
 git clone https://github.com/zeromq/cppzmq.git
 cp cppzmq/*.hpp zeromq/include/
 ```
+## Build zlib 
+
+* get sources
+
+```
+wget http://zlib.net/zlib-1.2.8.tar.gz
+tar -xvzf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+```
+
+* build settings
+
+```
+INSTALLATION_PATH=/path/to/install_directory
+
+export CC=arm-linux-androideabi-gcc
+export CPP=arm-linux-androideabi-g++
+export AR=arm-linux-androideabi-ar
+export prefix=$INSTALLATION_PATH
+```
+
+* build & install
+
+```
+./configure
+make
+make install
+```
 
 ## And finally: Build Monero
 ```
