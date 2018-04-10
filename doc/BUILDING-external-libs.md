@@ -16,9 +16,9 @@ sudo chown $LOGNAME /opt/android
 ## Install Android NDK
 ```
 cd /opt/android
-wget https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip
-unzip android-ndk-r15c-linux-x86_64.zip
-android-ndk-r15c/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch arm --install-dir /opt/android/tool32
+wget https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
+unzip android-ndk-r16b-linux-x86_64.zip
+android-ndk-r16b/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch arm --install-dir /opt/android/tool32
 ```
 
 ## Build OpenSSL
@@ -97,6 +97,34 @@ make install
 git clone https://github.com/zeromq/cppzmq.git
 cp cppzmq/*.hpp zeromq/include/
 ```
+## Build zlib 
+
+* get sources
+
+```
+wget http://zlib.net/zlib-1.2.8.tar.gz
+tar -xvzf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+```
+
+* build settings
+
+```
+INSTALLATION_PATH=/path/to/install_directory
+
+export CC=arm-linux-androideabi-gcc
+export CPP=arm-linux-androideabi-g++
+export AR=arm-linux-androideabi-ar
+export prefix=$INSTALLATION_PATH
+```
+
+* build & install
+
+```
+./configure
+make
+make install
+```
 
 ## And finally: Build Monero
 ```
@@ -129,7 +157,8 @@ cd build/release.android32
 export PATH=/opt/android/tool32/arm-linux-androideabi/bin:/opt/android/tool32/bin:$PATH
 
 # for zeromq versions (>v0.11.0.0).
-CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -D ZMQ_INCLUDE_PATH=/opt/android/zeromq/include -D ZMQ_LIB=/opt/android/zeromq/lib/libzmq.a ../..
+CC=clang CXX=clang++ cmake -D HTTP_COMPRESSION=ON -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -D ZMQ_INCLUDE_PATH=/opt/android/zeromq/include -D ZMQ_LIB=/opt/android/zeromq/lib/libzmq.a -D ZLIB_LIBRARY=/opt/android/zlib/lib/libz.a   ../..
+
 
 # for pre-zeromq versions (<=v0.11.0.0).
 CC=clang CXX=clang++ cmake -D BUILD_TESTS=OFF -D ARCH="armv7-a" -D STATIC=ON -D BUILD_64=OFF -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D BUILD_TAG="android" -D BOOST_ROOT=/opt/android/boost_1_58_0 -D BOOST_LIBRARYDIR=/opt/android/boost_1_58_0/android32/lib  -D OPENSSL_ROOT_DIR=/opt/android/openssl/android-21 -D CMAKE_POSITION_INDEPENDENT_CODE:BOOL=true ../..
