@@ -2,7 +2,7 @@
 <resources>
     <string name="about_title">About</string>
     <string name="about_close">Close</string>
-    <string name="about_version">I am Sumo Wallet %1$s (%2$d)</string>
+    <string name="about_version">I am Ombre Wallet %1$s (%2$d)</string>
 
     <string name="donation_text">
         \"Donate you ungrateful bastards!\"
@@ -32,23 +32,23 @@
         <h2>Data Collected</h2>
         <p>Personal data is any kind of data that could identify an individual.
         </p>
-        <p>Sumo keys and public addresses are collected and processed by the app locally
-        for the purpose of processing transactions and transmitted into the Sumokoin Network
+        <p>Ombre keys and public addresses are collected and processed by the app locally
+        for the purpose of processing transactions and transmitted into the Ombre Network
         in encrypted form.
         </p>
         <p>Other personal data is not collected by the app.</p>
-        <p>If you use the USD/EUR exchange (optional) functionality, Sumo Wallet fetches the exchange
+        <p>If you use the USD/EUR exchange (optional) functionality, Ombre Wallet fetches the exchange
         rate through the public API of kraken.com.
         See their privacy policy at https://www.kraken.com/legal/privacy for
         details on how data in your requests is collected (especially the
         section "Information We Collect Automatically").</p>
         <h2>App Permissions</h2>
         <ul>
-        <li>INTERNET : Connect to the Sumokoin Network via a Sumokoin Daemon Node</li>
+        <li>INTERNET : Connect to the Ombre Network via a Ombre Daemon Node</li>
         <li>READ_EXTERNAL_STORAGE : Read wallet files stored on the device</li>
         <li>WRITE_EXTERNAL_STORAGE : Write wallet files stored on the device</li>
         <li>WAKE_LOCK : Keep device awake while syncing</li>
-        <li>CAMERA : Scan QR Codes for receiving Sumokoin</li>
+        <li>CAMERA : Scan QR Codes for receiving Ombre</li>
         </ul>
         <h2>Changes to this Privacy Policy</h2>
         <p>We may update this privacy policy from time to time. We will notify
@@ -59,7 +59,7 @@
         <h2>Contact Us</h2>
         <p>If you have any questions about our privacy policy,
         or how your data is being collected and processed,
-        please e-mail devs@sumokoin.org.
+        please e-mail devs@ombre.io
         </p>
         ]]></string>
 

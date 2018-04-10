@@ -18,6 +18,11 @@
     <color name="sumoLightGrey">#d5d5d9</color>
     <color name="sumoDarkGrey">#adadb1</color>
 
+
+    <color name="ombreLightGrey">#c1c1c1</color>
+    <color name="ombreGrey">#8c8c8c</color>
+    <color name="ombreDarkGrey">#646464</color>
+
     <color name="moneroOrange">#cc5100</color>
     <color name="moneroWhite">#ffffff</color>
     <color name="moneroBlack">#000000</color>

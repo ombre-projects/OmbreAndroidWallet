@@ -29,7 +29,7 @@
 
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimary">@color/moneroText</item>
-        <item name="colorAccent">@color/sumoDarkBlue</item>
+        <item name="colorAccent">@color/ombreDarkGrey</item>
 
         <item name="android:spinnerItemStyle">@style/MoneroSpinnerItem</item>
         <item name="android:spinnerStyle">@style/MoneroSpinner</item>
@@ -83,7 +83,7 @@
 
     <style name="MoneroText.Balance.Orange">
         <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/sumoDarkBlue</item>
+        <item name="android:textColor">@color/ombreDarkGrey</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -135,7 +135,7 @@
 
     <style name="MoneroLabel.Heading">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/sumoDarkBlue</item>
+        <item name="android:textColor">@color/ombreDarkGrey</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -215,12 +215,12 @@
 
     <style name="MoneroText.Sucess">
         <item name="android:textSize">40dp</item>
-        <item name="android:textColor">@color/sumoDarkBlue</item>
+        <item name="android:textColor">@color/ombreDarkGrey</item>
     </style>
 
     <style name="MoneroText.Button" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/sumoDarkBlue</item>
+        <item name="android:textColor">@color/ombreDarkGrey</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
     </style>
@@ -257,19 +257,19 @@
 
     <style name="MoneroEdit" parent="MoneroText">
         <item name="android:textColor">?colorPrimary</item>
-        <item name="android:backgroundTint">@color/sumoDarkBlue</item>
+        <item name="android:backgroundTint">@color/ombreDarkGrey</item>
     </style>
 
     <style name="MoneroEdit.Amount">
         <!--item name="android:textSize">32sp</item-->
-        <item name="android:textColor">@color/sumoDarkBlue</item>
+        <item name="android:textColor">@color/ombreDarkGrey</item>
         <item name="android:textStyle">bold</item>
     </style>
 
 
     <style name="MoneroEdit.Medium" parent="MoneroText.Medium">
         <item name="android:textColor">?colorPrimary</item>
-        <item name="android:backgroundTint">@color/sumoDarkBlue</item>
+        <item name="android:backgroundTint">@color/ombreDarkGrey</item>
     </style>
 
     <style name="MoneroEdit.Small">
@@ -295,7 +295,7 @@
     </style>
 
     <style name="MoneroTextAppearanceSpinnerItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
-        <item name="android:textColor">@color/sumoDarkBlue</item>
+        <item name="android:textColor">@color/ombreDarkGrey</item>
     </style>
 
     <style name="MoneroSpinnerItem.Balance">

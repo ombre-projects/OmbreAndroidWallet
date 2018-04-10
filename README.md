@@ -8,7 +8,7 @@ An Android Ombre Wallet
 - See the [FAQ](doc/FAQ.md) for more info.
 
 ### Disclaimer
-You may lose all your Sumo if you use this App. Use at own risk ;-)
+You may lose all your OMB if you use this App. Use at own risk ;-)
 
 ### Random Notes
 - Based on the awesome xmrwallet

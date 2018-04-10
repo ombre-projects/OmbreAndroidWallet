@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef XMRWALLET_WALLET_LIB_H
-#define XMRWALLET_WALLET_LIB_H
+#ifndef OMBRE_WALLET_LIB_H
+#define OMBRE_WALLET_LIB_H
 
 #include <jni.h>
 /*
@@ -48,4 +48,4 @@ void setHandle(JNIEnv *env, jobject obj, T *t) {
     setHandleFromLong(env, obj, handle);
 }
 
-#endif //XMRWALLET_WALLET_LIB_H
+#endif //OMBRE_WALLET_LIB_H
