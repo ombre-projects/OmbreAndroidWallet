@@ -1,4 +1,5 @@
-// Copyright (c) 2016-2017, SUMOKOIN, (forked from) The Monero Project
+// Copyright (c) 2014-2017, The Monero Project
+// Copyright (c) 2017, SUMOKOIN
 //
 // All rights reserved.
 //
@@ -312,6 +313,9 @@ struct Wallet
     std::string mainAddress() const { return address(0, 0); }
     virtual std::string path() const = 0;
 
+    // Controls whether the wallet should send the viewkey to the wallet node for refreshing.
+    virtual void setRefreshFromViewKey(bool v) = 0;
+
     /*!
      * \brief integratedAddress - returns integrated address for current wallet address and given payment_id.
      *                            if passed "payment_id" param is an empty string or not-valid payment id string
@@ -372,10 +376,11 @@ struct Wallet
      * \param daemon_address - daemon address in "hostname:port" format
      * \param upper_transaction_size_limit
      * \param enable_ssl - whether SSL should be used in the connections.
+     * \param cacerts_path - optional path to a CA certificates file.
      * \return  - true if initialized and refreshed successfully
      */
     virtual void init(const std::string &daemon_address, uint64_t upper_transaction_size_limit, bool enable_ssl=false,
-                      const char* cacerts_path=nullptr) = 0;
+        const char* cacerts_path=nullptr) = 0;
 
     /*!
      * \brief init - initalizes wallet asynchronously. logic is the same as "init" but returns immediately.
@@ -383,10 +388,12 @@ struct Wallet
      *
      * \param daemon_address - daemon address in "hostname:port" format
      * \param upper_transaction_size_limit
+     * \param enable_ssl - whether SSL should be used in the connections.
+     * \param cacerts_path - optional path to a CA certificates file.
      * \return  - true if initialized and refreshed successfully
      */
     virtual void initAsync(const std::string &daemon_address, uint64_t upper_transaction_size_limit, bool enable_ssl=false,
-                           const char* cacerts_path=nullptr) = 0;
+        const char* cacerts_path=nullptr) = 0;
 
    /*!
     * \brief setRefreshFromBlockHeight - start refresh from block height on recover

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/etDummy"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint=""
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="29dp">
+
+        <io.ombre.wallet.widget.DropDownEditText
+            android:id="@+id/etDaemonAddress"
+            style="@style/MoneroEdit.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:hint="@string/prompt_daemon"
+            android:imeOptions="actionDone"
+            android:inputType="textWebEmailAddress|textNoSuggestions"
+            android:maxLines="1"
+            android:textIsSelectable="true" />
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>

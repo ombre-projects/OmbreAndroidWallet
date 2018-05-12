@@ -9,6 +9,8 @@
 
     <string name="menu_share">Share</string>
     <string name="menu_help">Help</string>
+    <string name="menu_node">Set wallet node</string>
+    <string name="menu_sync_mode">Enable viewkey sync</string>
     <string name="menu_info">Details</string>
     <string name="menu_receive">Receive</string>
     <string name="menu_rename">Rename &#8230;</string>

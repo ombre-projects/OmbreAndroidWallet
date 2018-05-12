@@ -50,6 +50,7 @@ import android.widget.Toast;
 
 import io.ombre.wallet.dialog.AboutFragment;
 import io.ombre.wallet.dialog.HelpFragment;
+import io.ombre.wallet.dialog.NodeFragment;
 import io.ombre.wallet.dialog.PrivacyFragment;
 import io.ombre.wallet.model.Wallet;
 import io.ombre.wallet.model.WalletManager;
@@ -1098,6 +1099,9 @@ public class LoginActivity extends SecureActivity
                 return true;
             case R.id.action_privacy_policy:
                 PrivacyFragment.display(getSupportFragmentManager());
+                return true;
+            case R.id.action_menu_node:
+                NodeFragment.display(getSupportFragmentManager());
                 return true;
 /*
     Testnet is disabled for now.

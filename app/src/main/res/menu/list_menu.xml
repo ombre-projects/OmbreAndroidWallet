@@ -2,14 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--
+
     <item
-        android:id="@+id/action_testnet"
+        android:id="@+id/action_menu_sync_mode"
         android:checkable="true"
         android:orderInCategory="100"
-        android:title="@string/menu_testnet"
+        android:title="@string/menu_sync_mode"
         app:showAsAction="never" />
--->
+
+    <item
+        android:id="@+id/action_menu_node"
+        android:orderInCategory="300"
+        android:title="@string/menu_node"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_license_info"

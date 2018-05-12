@@ -27,9 +27,13 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -60,6 +64,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
     public static final String REQUEST_PW = "pw";
 
     private Toolbar toolbar;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     public void setToolbarButton(int type) {
@@ -170,6 +175,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
             default:
                 return super.onOptionsItemSelected(item);
         }
+
     }
 
     @Override
@@ -225,6 +231,7 @@ public class WalletActivity extends SecureActivity implements WalletFragment.Lis
         startWalletService();
         Timber.d("onCreate() done.");
     }
+
 
     public Wallet getWallet() {
         if (mBoundService == null) throw new IllegalStateException("WalletService not bound.");

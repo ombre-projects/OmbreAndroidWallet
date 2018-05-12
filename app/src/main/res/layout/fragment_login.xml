@@ -10,30 +10,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etDummy"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="@string/label_daemon">
-
-            <io.ombre.wallet.widget.DropDownEditText
-                android:id="@+id/etDaemonAddress"
-                style="@style/MoneroEdit.Small"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:hint="@string/prompt_daemon"
-                android:imeOptions="actionDone"
-                android:inputType="textWebEmailAddress|textNoSuggestions"
-                android:maxLines="1"
-                android:textIsSelectable="true" />
-        </android.support.design.widget.TextInputLayout>
-
         <TextView
             style="@style/MoneroLabel.Heading"
             android:layout_width="match_parent"

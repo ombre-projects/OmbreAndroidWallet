@@ -44,6 +44,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import io.ombre.wallet.R;
+import io.ombre.wallet.dialog.NodeFragment;
 import io.ombre.wallet.layout.WalletInfoAdapter;
 import io.ombre.wallet.model.WalletManager;
 import io.ombre.wallet.util.Helper;
@@ -64,11 +65,7 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     List<WalletManager.WalletInfo> walletList = new ArrayList<>();
     List<WalletManager.WalletInfo> displayedList = new ArrayList<>();
 
-    EditText etDummy;
     ImageView ivGunther;
-    DropDownEditText etDaemonAddress;
-    ArrayAdapter<String> nodeAdapter;
-
     Listener activityCallback;
 
     // Container Activity must implement this interface
@@ -113,7 +110,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
     @Override
     public void onPause() {
         Timber.d("onPause()");
-        savePrefs();
         super.onPause();
     }
 
@@ -160,55 +156,15 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         this.adapter = new WalletInfoAdapter(getActivity(), this);
         recyclerView.setAdapter(adapter);
 
-        etDummy = (EditText) view.findViewById(R.id.etDummy);
-        etDaemonAddress = (DropDownEditText) view.findViewById(R.id.etDaemonAddress);
-        nodeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line);
-        etDaemonAddress.setAdapter(nodeAdapter);
-
-        Helper.hideKeyboard(getActivity());
-
-        etDaemonAddress.setThreshold(0);
-        etDaemonAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etDaemonAddress.showDropDown();
-                Helper.showKeyboard(getActivity());
-            }
-        });
-
-        etDaemonAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus && !getActivity().isFinishing() && etDaemonAddress.isLaidOut()) {
-                    etDaemonAddress.showDropDown();
-                    Helper.showKeyboard(getActivity());
-                }
-            }
-        });
-
-        etDaemonAddress.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    Helper.hideKeyboard(getActivity());
-                    etDummy.requestFocus();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        etDaemonAddress.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View arg1, int pos, long id) {
-                Helper.hideKeyboard(getActivity());
-                etDummy.requestFocus();
-
-            }
-        });
-
-        loadPrefs();
-
+        setNet(false /* testnet */);
+        activityCallback.showNet(false /* testnet */);
         return view;
+    }
+
+    public void setNet(boolean testnet) {
+        this.testnet = testnet;
+        activityCallback.showNet(testnet);
+        loadList();
     }
 
     // Callbacks from WalletInfoAdapter
@@ -221,8 +177,13 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         }
 
         if (activityCallback.onWalletSelected(infoItem.name, getDaemon(), isTestnet())) {
-            savePrefs();
+            //savePrefs();
         }
+    }
+
+    String getDaemon() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getString(NodeFragment.PREF_DAEMON, "wallet.ombre.io:4445");
     }
 
     @Override
@@ -315,84 +276,6 @@ public class LoginFragment extends Fragment implements WalletInfoAdapter.OnInter
         return testnet;
     }
 
-    public boolean onTestnetMenuItem() {
-        boolean lastState = testnet;
-        setNet(!lastState, true); // set and save
-        return !lastState;
-    }
-
-    public void setNet(boolean testnet, boolean save) {
-        this.testnet = testnet;
-        activityCallback.showNet(testnet);
-        if (save) {
-            savePrefs(true); // use previous state as we just clicked it
-        }
-        if (testnet) {
-            setDaemon(daemonTestNet);
-        } else {
-            setDaemon(daemonMainNet);
-        }
-        loadList();
-    }
-
-    private static final String PREF_DAEMON_TESTNET = "daemon_testnet";
-    private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
-
-    private static final String PREF_DAEMONLIST_MAINNET =
-            "wallet.ombre.io:4445";
-
-    private static final String PREF_DAEMONLIST_TESTNET =
-            "testnet.nope";
-
-    private NodeList daemonTestNet;
-    private NodeList daemonMainNet = null;
-
-    void loadPrefs() {
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-        daemonTestNet = new NodeList(sharedPref.getString(PREF_DAEMON_TESTNET, PREF_DAEMONLIST_TESTNET));
-        daemonMainNet = new NodeList(sharedPref.getString(PREF_DAEMON_MAINNET, PREF_DAEMONLIST_MAINNET));
-        setNet(isTestnet(), false);
-    }
-
-    void savePrefs() {
-        savePrefs(false);
-    }
-
-    void savePrefs(boolean usePreviousState) {
-        Timber.d("SAVE / %s", usePreviousState);
-        // save the daemon address for the net
-        boolean testnet = isTestnet() ^ usePreviousState;
-        String daemon = getDaemon();
-        if (testnet) {
-            daemonTestNet.setRecent(daemon);
-        } else {
-            daemonMainNet.setRecent(daemon);
-        }
-
-        SharedPreferences sharedPref = activityCallback.getPrefs();
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(PREF_DAEMON_MAINNET, daemonMainNet.toString());
-        editor.putString(PREF_DAEMON_TESTNET, daemonTestNet.toString());
-        editor.apply();
-    }
-
-    String getDaemon() {
-        return etDaemonAddress.getText().toString().trim();
-    }
-
-    void setDaemon(NodeList nodeList) {
-        Timber.d("setDaemon() %s", nodeList.toString());
-        String[] nodes = nodeList.getNodes().toArray(new String[0]);
-        nodeAdapter.clear();
-        nodeAdapter.addAll(nodes);
-        etDaemonAddress.getText().clear();
-        if (nodes.length > 0) {
-            etDaemonAddress.setText(nodes[0]);
-        }
-        etDaemonAddress.dismissDropDown();
-        etDummy.requestFocus();
-        Helper.hideKeyboard(getActivity());
-    }
 
     private boolean isFabOpen = false;
     private FloatingActionButton fab, fabNew, fabKey, fabSeed;

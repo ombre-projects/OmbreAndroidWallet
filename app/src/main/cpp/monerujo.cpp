@@ -794,6 +794,7 @@ Java_io_ombre_wallet_model_Wallet_getMaximumAllowedAmount(JNIEnv *env, jobject c
 JNIEXPORT void JNICALL
 Java_io_ombre_wallet_model_Wallet_startRefresh(JNIEnv *env, jobject instance) {
     Monero::Wallet *wallet = getHandle<Monero::Wallet>(env, instance);
+    wallet->setRefreshFromViewKey(true);
     wallet->startRefresh();
 }
 
