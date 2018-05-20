@@ -137,8 +137,6 @@ public class LoginActivity extends SecureActivity
         } else {
             Timber.i("Waiting for permissions");
         }
-
-        copyCACerts();
     }
 
     boolean checkServiceRunning() {
@@ -683,8 +681,60 @@ public class LoginActivity extends SecureActivity
         }
     }
 
+    private void copyCACerts() {
+        AssetManager assetManager = getAssets();
+
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+
+            // Make the directory
+            in = assetManager.open("cacert.pem");
+            String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ombre_wallet/";
+            File outdir = new File(dir);
+            outdir.mkdirs();
+
+            File outFile = new File(dir, "cacert.pem");
+            if (outFile.exists()) {
+                outFile.delete();
+            }
+
+            out = new FileOutputStream(outFile);
+            copyFile(in, out);
+        } catch (IOException e) {
+            Log.e("tag", "Failed to copy asset file: ", e);
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    // NOOP
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    // NOOP
+                }
+            }
+        }
+    }
+
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while((read = in.read(buffer)) != -1){
+            out.write(buffer, 0, read);
+        }
+    }
+
+
     void startWallet(String walletName, String walletPassword) {
         Timber.d("startWallet()");
+
+        copyCACerts();
+
         Intent intent = new Intent(getApplicationContext(), WalletActivity.class);
         intent.putExtra(WalletActivity.REQUEST_ID, walletName);
         intent.putExtra(WalletActivity.REQUEST_PW, walletPassword);
@@ -1257,54 +1307,6 @@ public class LoginActivity extends SecureActivity
             });
         } else { // this cannot really happen as we prefilter choices
             Toast.makeText(this, getString(R.string.bad_wallet), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void copyCACerts() {
-        AssetManager assetManager = getAssets();
-
-        InputStream in = null;
-        OutputStream out = null;
-        try {
-
-            // Make the directory
-            in = assetManager.open("cacert.pem");
-            String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/sumo_wallet/";
-            File outdir = new File(dir);
-            outdir.mkdirs();
-
-            File outFile = new File(dir, "cacert.pem");
-            if (outFile.exists()) {
-                outFile.delete();
-            }
-
-            out = new FileOutputStream(outFile);
-            copyFile(in, out);
-        } catch(IOException e) {
-            Log.e("tag", "Failed to copy asset file: " , e);
-        }
-        finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    // NOOP
-                }
-            }
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                    // NOOP
-                }
-            }
-        }
-    }
-    private void copyFile(InputStream in, OutputStream out) throws IOException {
-        byte[] buffer = new byte[1024];
-        int read;
-        while((read = in.read(buffer)) != -1){
-            out.write(buffer, 0, read);
         }
     }
 }

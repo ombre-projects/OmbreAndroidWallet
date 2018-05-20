@@ -33,7 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b1c64fb41c00af9b772ed608c76d01df5f90d1ff"
+            />
         <service
             android:name="io.ombre.wallet.service.WalletService"
             android:description="@string/service_description"

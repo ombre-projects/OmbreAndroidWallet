@@ -127,11 +127,15 @@ public class BarcodeData {
 
         if (address == null) return null;
 
-        if (!Wallet.isAddressValid(address)) {
-            Timber.d("address invalid");
-            return null;
+        if (Wallet.isAddressValid(address)) {
+            return new BarcodeData(Asset.XMR, address);
         }
 
-        return new BarcodeData(Asset.XMR, address);
+        if (address.length() == 16 || address.length() == 64) {
+            // As a fall back: treat the address as the payment ID.
+            return new BarcodeData(Asset.XMR, "unknown", address, "0");
+        }
+
+        return null;
     }
 }

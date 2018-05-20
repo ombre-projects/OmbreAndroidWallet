@@ -23,12 +23,13 @@ import android.support.v7.app.AppCompatActivity;
 import io.ombre.wallet.BuildConfig;
 
 import static android.view.WindowManager.LayoutParams;
-
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 public abstract class SecureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Fabric.with(this, new Crashlytics());
         // set FLAG_SECURE to prevent screenshots in Release Mode
         if (!BuildConfig.DEBUG) {
             getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);

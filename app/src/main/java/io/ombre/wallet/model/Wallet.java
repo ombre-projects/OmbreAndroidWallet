@@ -16,11 +16,17 @@
 
 package io.ombre.wallet.model;
 
+import android.content.res.AssetManager;
 import android.os.Environment;
+import android.util.Log;
 
 import io.ombre.wallet.data.TxData;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import timber.log.Timber;
 
@@ -110,7 +116,8 @@ public class Wallet {
     //    virtual std::string keysFilename() const = 0;
     public boolean init(long upper_transaction_size_limit) {
 
-        String ssl_ca_certs = Environment.getExternalStorageDirectory().getAbsolutePath() + "/sumo_wallet/cacert.pem";
+        String ssl_ca_certs = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ombre_wallet/cacert.pem";
+
         return initJ(WalletManager.getInstance().getDaemonAddress(), upper_transaction_size_limit,
                 ssl_ca_certs,
                 WalletManager.getInstance().getDaemonUsername(),

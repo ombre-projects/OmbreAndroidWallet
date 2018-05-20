@@ -54,7 +54,7 @@
     <string name="rename_failed">Rename failed!</string>
 
     <string name="label_daemon">Node</string>
-    <string name="prompt_daemon">(&lt;daemon&gt;[:&lt;port&gt;])</string>
+    <string name="prompt_daemon">&lt;daemon&gt;[:&lt;port&gt;]</string>
     <string name="prompt_mainnet">Net Selection</string>
     <string name="connect_testnet">TestNet</string>
     <string name="connect_mainnet">MainNet</string>
@@ -65,7 +65,7 @@
     <string name="status_wallet_unload_failed">Wallet save failed!</string>
     <string name="status_wallet_unlocked_balance">Getting unlocked balance</string>
 
-    <string name="status_wallet_connecting">Connecting &#8230; (please wait)</string>
+    <string name="status_wallet_connecting">Syncing &#8230; (please wait)</string>
     <string name="status_wallet_connect_failed">Node connection failed!\nCheck username/password</string>
     <string name="status_wallet_connect_timeout">Node connection timed out!\nTry again or another.</string>
     <string name="status_wallet_node_invalid">Node invalid!\nTry another.</string>
@@ -135,7 +135,7 @@
     <string name="generate_title">Create Wallet</string>
     <string name="generate_name_hint">Wallet Name</string>
     <string name="generate_password_hint">Wallet Password</string>
-    <string name="generate_buttonGenerate">Make me a wallet already!</string>
+    <string name="generate_buttonGenerate">Create wallet</string>
     <string name="generate_seed">Mnemonic Seed</string>
     <string name="generate_button_accept">I have written down these 26 words!</string>
 
@@ -196,7 +196,7 @@
     <string name="send_send_hint">Spend my sweet OMB</string>
     <string name="send_really_send_hint">Last Step - Confirm!</string>
     <string name="send_qr_invalid">Not an Ombre QR Code</string>
-    <string name="send_qr_address_invalid">Invalid Monero address</string>
+    <string name="send_qr_address_invalid">Invalid Ombre address</string>
     <string name="send_preparing_progress">Preparing transaction</string>
     <string name="send_title">Send</string>
     <string name="send_available">Available funds: %1$s OMB</string>
